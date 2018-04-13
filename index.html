@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#33cccc">
+	<title>Risk Analizi</title>
+  	<link rel="stylesheet" href="css/style.css">
+	<link rel='stylesheet' media='screen and (max-width: 500px)' href='css/mobilecss.css' />
+</head>
+<body>
+	<div class="logo-place">
+		<img src="presets/radsan-just-logo.png" class="radsan-logo" id="radsan-logo" onclick="logoClickFunction()">
+	</div>
+	<div class="form1">
+		<form class='form' name="riskform" action="sonuc.php" method="post">
+			<h2>Risk Analiz Formu</h2>
+
+			<input id="one" type="radio" name="stage" checked="checked" />
+			<input id="two" type="radio" name="stage" />
+			<input id="three" type="radio" name="stage" />
+			<input id="four" type="radio" name="stage" />
+			<input id="five" type="radio" name="stage" />
+			<input id="six" type="radio" name="stage" />
+
+			<div class="stages">
+				<label for="one">Yapı</label>
+				<label for="two">Çevre</label>
+				<label for="three">Servis</label>
+				<label for="four">Önlem</label>
+				<label for="five">Kayıp I-II</label>
+				<label for="six">Kayıp III-IV</label>
+			</div>
+
+			<span class="progress"><span></span></span>
+
+			<div class="panels">
+				<div class="contentdiv" data-panel="one">
+					<h2>Yapı</h2>
+
+					<h4>Yapı Boyutları:</h4>
+					<input name="yapiUzunluk" type="number" placeholder="Uzunluk (m)" value='' required/>
+					<input name="yapiGenislik" type="number" placeholder="Genişlik (m)" value='' required/>
+					<input name="yapiCatiDuzlemiYerdenYukseklik" type="number" placeholder="Çatı Düzleminin Yerden Yüksekliği (m)" value='' required/>
+					<input name="yapiCatiYerdenYukseklik" type="number" placeholder="Çatıdaki En Yüksek Noktanın Yerden Yüksekliği* (m)" value='' />
+					<input name="toplamaAlani" type="number" placeholder="Toplama Alanı (m²)" value='' required/>
+
+					<h4 class="h4altBolum">Yapı/Çatı Malzemeleri:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>Yapı Malzemesi:</label></td>
+							<td class="tdsecondpart"><select name="yapiMalzemesi" id="soflow">
+								<option value="metal">Metal</option>
+								<option value="tugla-beton">Tuğla, Beton</option>
+								<option value="tutusabilir">Tutuşabilir</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Çatı Malzemesi:</label></td>
+							<td class="tdsecondpart"><select name="catiMalzemesi" id="soflow">
+								<option value="metal">Metal</option>
+								<option value="kiremit">Kiremit</option>
+								<option value="yanici">Yanıcı</option>
+							</select></td>
+						</tr>
+					</table>
+					
+					<h4 class="h4altBolum">Yapı Özellikleri:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>Fiziksel Hasar veya Yangın Riski:</label></td>
+							<td class="tdsecondpart"><select name="fizikselHasarvYanginRiski" id="soflow">
+								<option value="0.5">Değersiz, Yanıcı Olmayan</option>
+								<option value="1">Normal Değerli, Yanıcı</option>
+								<option value="2">Değerli Yanıcı</option>
+								<option value="3">Çok Değerli, Yeri Doldurulamaz, Patlayıcı ve Yanıcı</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Yapının Ekranlanması:</label></td>
+							<td class="tdsecondpart"><select name="yapininEkranlanmasi" id="soflow">
+								<option value="0">Ekransız</option>
+								<option value="1">Ekranlı</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Kabloların Ekranlanması:</label></td>
+							<td class="tdsecondpart"><select name="kabloEkranlanmasiYapiOzellikleri" id="soflow">
+								<option value="0">Ekransız</option>
+								<option value="1">Ekranlı</option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="contentdiv" data-panel="two">
+					<h2>Çevre Koşulları</h2>
+					<table>
+						<tr>		
+							<td class="tdfirstpart"><label>Konum Faktörü:</label></td>
+							<td class="tdsecondpart"><select name="konumFaktoru" id="soflow">
+								<option value="0.25">Yapı aynı yükseklikte veya daha yüksek yapılar arasında</option>
+								<option value="0.5">Yüksekliği az yapılar arasında</option>
+								<option value="1">Etrafında yapı yok ise</option>
+							  	<option value="2">Bölgedeki en yüksek bina ise</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Çevre Faktörü:</label></td>
+							<td class="tdsecondpart"><select name="cevreFaktoru" id="soflow">
+							  <option value="1">Sürekli Kullanımı Yok, Çevrede Değersiz</option>
+							  <option value="5">Sürekli Kullanımda, Çevrede Değersiz</option>
+							  <option value="10">Çevrede Değerli</option>
+							</select></td>
+						</tr>
+						<tr>		
+							<td class="tdfirstpart"><label>Yıllık Gök Gürültülü Gün Sayısı:</label></td>
+							<td class="tdsecondpart"><select name="yillikGokGurultuluGunSayisi" id="soflow">
+								<option value="27.4">Adana</option>
+								<option value="6">Adıyaman</option>
+								<option value="19">Afyon</option>
+								<option value="20">Ağrı</option>
+								<option value="8.1">Amasya</option>
+								<option value="20.7">Ankara</option>
+								<option value="30.4">Antalya</option>
+								<option value="30.3">Artvin</option>
+								<option value="22.5">Aydın</option>
+								<option value="17.3">Balıkesir</option>
+								<option value="16.2">Bilecik</option>
+								<option value="25">Bingöl</option>
+								<option value="21">Bitlis</option>
+								<option value="15.9">Bolu</option>
+								<option value="15.6">Burdur</option>
+								<option value="14.3">Bursa</option>
+								<option value="18.4">Çanakkale</option>
+								<option value="26.6">Çankırı</option>
+								<option value="18.4">Çorum</option>
+								<option value="10">Denizli</option>
+								<option value="18.6">Diyarbakır</option>
+								<option value="21">Edirne</option>
+								<option value="20.4">Elazığ</option>
+								<option value="16.9">Erzincan</option>
+								<option value="17.8">Erzurum</option>
+								<option value="18.6">Eskişehir</option>
+								<option value="12.1">Gaziantep</option>
+								<option value="17.6">Giresun</option>
+								<option value="16.5">Gümüşhane</option>
+								<option value="5">Hakkari</option>
+								<option value="27.7">Hatay</option>
+								<option value="24.3">Isparta</option>
+								<option value="20">Mersin</option>
+								<option value="11">İstanbul</option>
+								<option value="23.2">İzmir</option>
+								<option value="18.2">Kars</option>
+								<option value="32.6">Kastamonu</option>
+								<option value="20.6">Kayseri</option>
+								<option value="17">Kırklareli</option>
+								<option value="7.6">Kırşehir</option>
+								<option value="14.9">Kocaeli</option>
+								<option value="15.7">Konya</option>
+								<option value="16">Kütahya</option>
+								<option value="6.2">Malatya</option>
+								<option value="19.6">Manisa</option>
+								<option value="7.6">K.maraş</option>
+								<option value="7.2">Mardin</option>
+								<option value="32.7">Muğla</option>
+								<option value="25">Muş</option>
+								<option value="15.6">Nevşehir</option>
+								<option value="18.3">Niğde</option>
+								<option value="15">Ordu</option>
+								<option value="13.1">Rize</option>
+								<option value="9">Sakarya</option>
+								<option value="13.4">Samsun</option>
+								<option value="20.1">Siirt</option>
+								<option value="13.8">Sinop</option>
+								<option value="18.8">Sivas</option>
+								<option value="17.2">Tekirdağ</option>
+								<option value="11.1">Tokat</option>
+								<option value="16.3">Trabzon</option>
+								<option value="25">Tunceli</option>
+								<option value="8.7">Şanlıurfa</option>
+								<option value="20.4">Uşak</option>
+								<option value="14.2">Van</option>
+								<option value="16">Yozgat</option>
+								<option value="18.1">Zonguldak</option>
+								<option value="15.5">Aksaray</option>
+								<option value="14">Bayburt</option>
+								<option value="5.3">Karaman</option>
+								<option value="10">Kırıkkale</option>
+								<option value="18.5">Batman</option>
+								<option value="6">Şırnak</option>
+								<option value="20">Bartın</option>
+								<option value="25">Ardahan</option>
+								<option value="20">Iğdır</option>
+								<option value="28.3">Yalova</option>
+								<option value="19">Karabük</option>
+								<option value="15">Kilis</option>
+								<option value="28.9">Osmaniye</option>
+								<option value="10">Düzce</option>
+							</select></td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td class="tdfirstpart">İzokronik Harita:</td>
+							<td><img class="imgizokronik" src="presets/izokronikharita.png"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="contentdiv" data-panel="three">
+					<h2>Servis Hatları</h2>
+					<h4>Enerji Hattı:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>Yapıya Gelen Hattın Türü:</label></td>
+							<td class="tdsecondpart"><select name="yapiyaGelenHattinTuru" id="soflow">
+							  <option value="option0">Lütfen Seçim Yapın</option>
+							  <option value="option1">Option 1</option>
+							  <option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Kabloların Ekranlanması:</label></td>
+							<td class="tdsecondpart"><select name="kabloEkranlanmasiEnerjiHatti" id="soflow">
+							  <option value="option0">Lütfen Seçim Yapın</option>
+							  <option value="option1">Option 1</option>
+							  <option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>OG/AG Trafosunun Varlığı:</label></td>
+							<td class="tdsecondpart"><select name="ogagTrafosununVarligi" id="soflow">
+								<option value="option0">Lütfen Seçim Yapın</option>
+								<option value="option1">Option 1</option>
+								<option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+					</table>
+					<h4>Diğer Yerüstü Servisleri:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>İletken Servislerin Sayısı:</label></td>
+							<td class="tdsecondpart"><input name="yerUstuIletkenServisSayisi" type="number" value="" required/></td>
+						</tr>
+						<tr>		
+							<td class="tdfirstpart"><label>Yapıya Gelen Hattın Türü:</label></td>
+							<td class="tdsecondpart"><select name="yerUstuYapiyaGelenHatTuru" id="soflow">
+							  <option value="option0">Lütfen Seçim Yapın</option>
+							  <option value="option1">Option 1</option>
+							  <option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+					</table>
+					<h4>Diğer Yeraltı Servisleri:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>İletken Servislerin Sayısı:</label></td>
+							<td class="tdsecondpart"><input name="yerAltiIletkenServisSayisi" type="number" value="" required/></td>
+						</tr>
+						<tr>		
+							<td class="tdfirstpart"><label>Yapıya Gelen Hattın Türü:</label></td>
+							<td class="tdsecondpart"><select name="yerAltiYapiyaGelenHatTuru" id="soflow">
+							  <option value="option0">Lütfen Seçim Yapın</option>
+							  <option value="option1">Option 1</option>
+							  <option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+				<div class="contentdiv" data-panel="four">
+					<h2>Koruma Önlemleri</h2>
+					<h4>Koruma Önlemleri:</h4>
+					<table>
+						<tr>		
+							<td class="tdfirstpart"><label>Yıldırımdan Koruma Düzeyi:</label></td>
+							<td class="tdsecondpart"><select name="yildirimdanKorumaDuzeyi" id="soflow">
+							  <option value="0">Koruma Yok</option>
+							  <option value="1">Koruma Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Yangından Korunma Türü:</label></td>
+							<td class="tdsecondpart"><select name="yangindanKorunmaTuru" id="soflow">
+							  <option value="0">Koruma Yok</option>
+							  <option value="1">Koruma Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Aşırı Gerilimden Korunma Türü:</label></td>
+							<td class="tdsecondpart"><select name="asiriGerilimdenKorunmaTuru" id="soflow">
+							  <option value="0">Koruma Yok</option>
+							  <option value="1">Koruma Var</option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+				<div class="contentdiv" data-panel="five">
+					<h2>Kayıp Türü I - II</h2>
+					<h4>Can Kaybı:</h4>
+					<table>
+						<tr>		
+							<td class="tdfirstpart"><label>Yaşamsal Tehlikeler:</label></td>
+							<td class="tdsecondpart"><select name="yasamsalTehlikeler" id="soflow">
+								<option value="0.5">İnsansız Bina</option>
+								<option value="1">Normal Kalabalık</option>
+								<option value="3">Panik Riski Taşıyan, Tahliye Zorluğu Bulunan Bina</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Yangından Can Kaybı:</label></td>
+							<td class="tdsecondpart"><select name="yangindanCanKaybi" id="soflow">
+							  <option value="0">İnsansız bina</option>
+							  <option value="0.5">Normal Kalabalığın Olduğu Bina</option>
+							  <option value="1">Yoğun Kalabalığın Olduğu Bina</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Aşırı Gerilimden Can Kaybı:</label></td>
+							<td class="tdsecondpart"><select name="asiriGerilimdenCanKaybi" id="soflow">
+							  <option value="option0">Güvenlik Sistemi Yok</option>
+							  <option value="option1">Güvenlik Sistemi Var</option>
+							</select></td>
+						</tr>
+					</table>
+					<h4>Genel Servis Kaybı:</h4>
+					<table>
+						<tr>		
+							<td class="tdfirstpart"><label>Yangından Zarar Görecek Servis:</label></td>
+							<td class="tdsecondpart"><select name="yangindanZararGorecekServis" id="soflow">
+							  <option value="0">Servis Yok</option>
+							  <option value="1">Servis Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Aşırı Gerilimden Zarar Görecek Servis:</label></td>
+							<td class="tdsecondpart"><select name="asiriGerilimdenZararGorecekServis" id="soflow">
+							  <option value="0">Servis Yok</option>
+							  <option value="1">Servis Var</option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+				<div data-panel="six">
+					<h2>Kayıp Türü III - IV</h2>
+					<h4>Kültürel Miras Kaybı:</h4>
+					<table>
+						<tr>		
+							<td class="tdfirstpart"><label>Yangın Nedeniyle Kültürel Miras Kaybı:</label></td>
+							<td class="tdsecondpart"><select name="yanginNedeniyleKulturelMirasKaybi" id="soflow">
+							  <option value="0">Kültürel Miras Değeri Yok</option>
+							  <option value="1">Kültürel Miras Değeri Var</option>
+							</select></td>
+						</tr>
+					</table>
+					<h4>Ekonomik Kayıp:</h4>
+					<table>
+						<tr>
+							<td class="tdfirstpart"><label>Ekonomik Zarar:</label></td>
+							<td class="tdsecondpart"><select name="ekonomikZarar" id="soflow">
+								<option value="0">Ekonomik Zarar Tehlikesi Yok</option>
+								<option value="1">Ekonomik Zarar Tehlikesi Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Yangın Nedeniyle Ekonomik Kayıp:</label></td>
+							<td class="tdsecondpart"><select name="yanginNedeniyleEkonomikKayip" id="soflow">
+								<option value="0">Kayıp Riski Yok</option>
+								<option value="1">Ticari Kayıp Riski Var</option>
+								<option value="2">Demirbaş Kayıp Riski Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Aşırı Gerilim Nedeniyle Ekonomik Kayıp:</label></td>
+							<td class="tdsecondpart"><select name="asiriGerilimNedeniyleEkonomikKayip" id="soflow">
+								<option value="ev">Ev</option>
+								<option value="isyeri">İş Yeri</option>
+								<option value="kamubinasi">Kamu Binası</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Adım/Dokunma Gerilimi Etkisi:</label></td>
+							<td class="tdsecondpart"><select name="adimDokunmaGerilimiEtkisi" id="soflow">
+								<option value="0">Çiftlik Hayvanı Yok</option>
+								<option value="1">Çiftlik Hayvanı Var</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="tdfirstpart"><label>Kabul Edilir Ekonomik Risk:</label></td>
+							<td class="tdsecondpart"><select name="kabulEdilirEkonomikRisk" id="soflow">
+								<option value="option0">Lütfen Seçim Yapın</option>
+								<option value="option1">Option 1</option>
+								<option value="option2">Option 2</option>
+							</select></td>
+						</tr>
+					</table>
+				</div>
+				<p style="font-size: 12px;">(* olan alanlar isteğe bağlı alanlardır.)</p>
+			</div>
+			<button id="btnDevam" type="button">Devam</button>
+		</form>
+	</div>
+	<div class="footer-place">
+		<img src="presets/radsan_logo.png" class="footer-logo">
+		<div id="sym_bottom_adres"><b>MERKEZ</b><br>Adres: İVOGSAN Ağaç Metal İşleri Sitesi<br>1122 Cd. 1434. Sk. No:1 Ostim / Ankara<br>Tel: 444 62 11<br>Fax: 0312 394 53 58<br>WhatsApp: 0549 743 30 35</div>
+		<div id="sym_bottom_adres2"><b>MARMARA BÖLGE MÜDÜRLÜĞÜ</b><br>Adres: İmes Sanayi Sitesi <br>A Blok 104 Sok. No:36/B <br>Esenşehir Ümraniye / İstanbul</div>
+		<div id="sym_bottom_copy"><br>© 2018 - RADSAN Elektromekanik İnşaat San. Tic. A.Ş. <br>Her Hakkı Saklıdır.</div>
+	</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

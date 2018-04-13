@@ -1,0 +1,373 @@
+.stages{
+	
+	font-size: 0;
+	text-align: justify;
+}
+
+.logo-place{
+	
+	width: 100% !important;
+	min-width: 480px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.radsan-logo{
+	
+	width: 100px;
+	height: 90px;
+}
+
+.radsan-logo:hover{
+
+
+}
+
+.footer-place{
+	
+	position: relative;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+	min-width: 590px;
+	width: 100%;
+	height: 150px;
+	margin-top: 20px;
+	border-style: outset;
+	border-color: #00ace6;
+	border-radius: 25px;
+	background-color: #ffffff;
+}
+
+.footer-logo{
+	
+	width: 250px;
+	height: 100px;
+	margin-top: 5px;
+}
+
+#sym_bottom_adres{
+	
+	position: absolute;
+	top: 0px;
+	color: #000000;
+	left: 330px;
+	bottom: 50px;
+}
+
+#sym_bottom_adres2{
+	
+	position: absolute;
+	top: 0px;
+	left: 660px;
+	color: #000000;
+}
+
+#sym_bottom_copy{
+	
+	position: absolute;
+	top: 0px;
+	left: 640px;
+	top: 88px;
+	color: #2e2e2e;
+	width: 400px;
+	text-align: right;
+}
+
+.stages:after{
+	
+	content: '';
+	display: inline-block;
+	font-size: 0;
+	text-align: justify;
+	width: 100%;
+}
+
+input[type="radio"]{
+	
+	display: none;
+}
+
+.stages label{
+	
+	background: #ffffff;
+	border: solid 5px #c0c0c0;
+	border-radius: 50%;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0;
+	font-weight: 700;
+	height: 50px;
+	line-height: 50px;
+	position: relative;
+	text-align: center;
+	vertical-align: top;
+	width: 50px;
+	z-index: 1;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*aşama tamamlanınca tik rengi*/
+.stages label:after{
+	
+	content: '\2713';
+	color: #33cccc;
+	display: inline-block;
+	font-size: 16px;
+}
+
+#one:checked ~ .stages label[for="one"],
+#two:checked ~ .stages label[for="two"],
+#three:checked ~ .stages label[for="three"],
+#four:checked ~ .stages label[for="four"],
+#five:checked ~ .stages label[for="five"],
+#six:checked ~ .stages label[for="six"]{
+	
+	border-color: #33cccc;
+}
+
+.stages label.active{
+	
+	border-color: purple !important;
+}
+
+#one:checked ~ .stages label,
+#two:checked ~ .stages label[for="one"] ~ label,
+#three:checked ~ .stages label[for="two"] ~ label,
+#four:checked ~ .stages label[for="three"] ~ label,
+#five:checked ~ .stages label[for="four"] ~ label,
+#six:checked ~ .stages label[for="five"] ~ label{
+	
+	font-size: 1rem;
+}
+
+#one:checked ~ .stages label:after,
+#two:checked ~ .stages label[for="one"] ~ label:after,
+#three:checked ~ .stages label[for="two"] ~ label:after,
+#four:checked ~ .stages label[for="three"] ~ label:after,
+#five:checked ~ .stages label[for="four"] ~ label:after,
+#six:checked ~ .stages label[for="five"] ~ label:after{
+	
+	display: none;
+}
+
+.progress > span{
+	
+	background: #c0c0c0;
+	display: inline-block;
+	height: 5px;
+	transform: translateY(-2.75em);
+	transition: 0.3s;
+	width: 0;
+}
+
+#two:checked ~ .progress span{
+	
+	width: calc(100% / 5 * 1);
+}
+
+#three:checked ~ .progress span{
+	
+	width: calc(100% / 5 * 2);
+}
+
+#four:checked ~ .progress span{
+	
+	width: calc(100% / 5 * 3);
+}
+
+#five:checked ~ .progress span{
+	
+	width: calc(100% / 5 * 4);
+}
+
+#six:checked ~ .progress span{
+	
+	width: calc(100% / 5 * 5);
+}
+
+.panels div{
+	
+	display: none;
+}
+
+#one:checked ~ .panels [data-panel="one"],
+#two:checked ~ .panels [data-panel="two"],
+#three:checked ~ .panels [data-panel="three"],
+#four:checked ~ .panels [data-panel="four"],
+#five:checked ~ .panels [data-panel="five"],
+#six:checked ~ .panels [data-panel="six"]{
+	
+	display: block;
+}
+
+.contentdiv{
+	
+	text-align:left;
+	width: 100%;
+	height: 100%;
+}
+
+/* Custom code for the demo */
+
+html,
+button,
+input,
+select,
+textarea{
+	
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+body{
+	
+	background-color: #33cccc;
+	margin-left: 6em;
+	margin-right: 6em;
+	padding: 0 2em;
+}
+
+a{
+	
+	color: #0cc39f;
+}
+
+h2{
+	
+	margin-top: 0;
+	text-align: center;
+}
+
+h4{
+	
+	text-align:left;
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+/*select css kısmı*/
+select#soflow{
+	
+	-webkit-appearance: button;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
+	background-image: url(selectholder.png), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+	background-position: 97% center;
+	background-repeat: no-repeat;
+	border: 1px solid #AAA;
+	color: #555;
+	font-size: inherit;
+	margin: 20px;
+	overflow: hidden;
+	padding: 5px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 70%;
+}
+
+.h4altBolum{
+
+	text-align:left;
+	margin-top: 15px;
+	font-size: 20px;
+}
+
+.form{
+	
+	background: #ffffff;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .4);
+	min-width: 480px;
+	padding: 3em 5em;
+	border-radius: 25px;
+    border: 2px solid #00ace6;
+}
+
+.form1{
+	
+	width: 100% !important;
+}
+
+.panels div{
+	
+	border-top: solid 1px #c0c0c0;
+	margin: 1em 0 0;
+	padding: 1em 0 0;
+}
+
+input{
+	
+	box-sizing: border-box;
+	display: block;
+	padding: .4em;
+	width: 50%;
+	text-align: left;
+	margin-top: 3px;
+}
+
+button{
+	
+	background-color: #33cccc;
+	border: 0;
+	color: #ffffff;
+	cursor: pointer;
+	font-weight: 700;
+	margin: 1em 0 0 0;
+	padding: 1em;
+}
+
+button:hover{
+	
+	opacity: 0.8;
+}
+
+table{
+	
+	width: 80%;
+	margin-top: 10px;
+}
+
+/**/
+table, th, td{
+	
+    border: 1px solid #c0c0c0;
+    border-collapse: collapse;
+}
+
+th, td{
+	
+    padding: 5px;
+	text-align: center;
+}
+
+td.tdsecondpart{
+	
+	width: 315px;
+}
+
+td.tdfirstpart{
+	
+	text-align:left;
+}
+
+
+th{
+	
+    text-align: left;
+}
+
+img{
+	
+	margin-left: 20px;
+	width:60%;
+}
+
+img.imgizokronik:hover{
+	
+	width: 82%;
+}
